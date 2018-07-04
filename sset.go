@@ -22,7 +22,7 @@ type SSet struct {
 
 //NewSSet Sorted Set
 func NewSSet(cmp cmp.Compare, load ...int) *SSet {
-	var ldN int = Load
+	var ldN = Load
 	if len(load) > 0 {
 		ldN = load[0]
 	}
@@ -50,12 +50,12 @@ func (s *SSet) Clone() *SSet {
 }
 
 func (s *SSet) Size() int {
-	n := 0
+	var n = 0
 	if s.IsEmpty() {
 		return n
 	}
-	view := s.list.DataView()
-	sub := view[len(view)-1].(*subset)
+	var view = s.list.DataView()
+	var sub  = view[len(view)-1].(*subset)
 	n = sub.offset + sub.size()
 	return n
 }

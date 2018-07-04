@@ -8,7 +8,7 @@ func (s *SSet) addSubset(sub *subset) *SSet {
 }
 
 func (s *SSet) allocSubset() *subset {
-	sub := subsset.NewSubSSet(s.cmp, subN)
+	var sub = subsset.NewSubSSet(s.cmp, subN)
 	return &subset{set: sub, offset: 0}
 }
 

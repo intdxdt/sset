@@ -14,7 +14,7 @@ func IntCompare(a, b interface{}) int {
 }
 
 func FloatCompare(a, b interface{}) int {
-	d := a.(float64) - b.(float64)
+	var d = a.(float64) - b.(float64)
 	if d < 0 {
 		return -1
 	} else if d > 0 {
@@ -24,7 +24,7 @@ func FloatCompare(a, b interface{}) int {
 }
 
 func StrCompare(a, b interface{}) int {
-	str, v := a.(string), b.(string)
+	var str, v = a.(string), b.(string)
 	if str < v {
 		return -1
 	} else if str > v {
@@ -53,15 +53,15 @@ func GenRandIndxs(N int) []int {
 }
 
 func TestSSet(t *testing.T) {
-	g := goblin.Goblin(t)
+	var g = goblin.Goblin(t)
 
 	g.Describe("SSet", func() {
 		var array = []interface{}{9, 5, 3, 2, 8, 6, 4, 6, 1, 2, 3}
 		var arrayF = []interface{}{9.0, 5.0, 3.0, 2.0, 8.0, 6.0, 4.0, 6.0, 1.0, 2.0, 3.0}
 
-		var obj_flt = NewSSet(FloatCompare, 2)
+		var objFlt = NewSSet(FloatCompare, 2)
 		for _, v := range arrayF {
-			obj_flt.Add(v)
+			objFlt.Add(v)
 		}
 
 		g.It("should test s - common-int interface", func() {
@@ -81,36 +81,36 @@ func TestSSet(t *testing.T) {
 			g.Assert(st.Size() == 7).IsTrue()
 			g.Assert(st.IsEmpty()).IsFalse()
 
-			var each_item = make([]int, 0)
+			var eachItem = make([]int, 0)
 			st.ForEach(func(o interface{}, _ int) bool {
-				each_item = append(each_item, o.(int))
+				eachItem = append(eachItem, o.(int))
 				return true
 			})
-			g.Assert(each_item).Eql([]int{1, 2, 3, 4, 5, 8, 9})
-			var odd_list = st.Filter(func(o interface{}, _ int) bool {
+			g.Assert(eachItem).Eql([]int{1, 2, 3, 4, 5, 8, 9})
+			var oddList = st.Filter(func(o interface{}, _ int) bool {
 				return o.(int)%2 == 1
 			})
-			first_3odd_list := make([]interface{}, 0)
+			var first3oddList = make([]interface{},0)
 
 			st.ForEach(func(o interface{}, _ int) bool {
 				if o.(int)%2 == 1 {
-					first_3odd_list = append(first_3odd_list, o.(int))
+					first3oddList = append(first3oddList, o.(int))
 				}
-				if len(first_3odd_list) == 3 {
+				if len(first3oddList) == 3 {
 					return false
 				}
 				return true
 			})
 
-			g.Assert(st.IndexOf(9)).Equal(len(each_item) - 1)
+			g.Assert(st.IndexOf(9)).Equal(len(eachItem) - 1)
 			g.Assert(st.IndexOf(1)).Equal(0)
 			g.Assert(st.IndexOf(6)).Equal(-1)
 
-			g.Assert(len(odd_list)).Eql(4)
-			g.Assert(len(first_3odd_list)).Eql(3)
+			g.Assert(len(oddList)).Eql(4)
+			g.Assert(len(first3oddList)).Eql(3)
 
 			var odds = make([]int, 0)
-			for _, v := range odd_list {
+			for _, v := range oddList {
 				odds = append(odds, v.(int))
 			}
 			g.Assert(odds).Eql([]int{1, 3, 5, 9})
@@ -161,12 +161,12 @@ func TestSSet(t *testing.T) {
 			g.Assert(st.Remove(f6).Contains(f6)).IsFalse()
 			g.Assert(st.IsEmpty()).IsFalse()
 
-			var each_item = make([]float64, 0)
+			var eachItem = make([]float64, 0)
 			st.ForEach(func(o interface{}, _ int) bool {
-				each_item = append(each_item, o.(float64))
+				eachItem = append(eachItem, o.(float64))
 				return true
 			})
-			g.Assert(each_item).Eql([]float64{1, 2, 3, 4, 5, 8, 9})
+			g.Assert(eachItem).Eql([]float64{1, 2, 3, 4, 5, 8, 9})
 
 			g.Assert(st.First()).Equal(1.0)
 			g.Assert(st.Last()).Equal(9.0)
@@ -198,16 +198,16 @@ func TestSSet(t *testing.T) {
 			g.Assert(st.Remove(s6).Contains(s6)).IsFalse()
 			g.Assert(st.IsEmpty()).IsFalse()
 
-			var each_item = make([]interface{}, 0)
+			var eachItem = make([]interface{}, 0)
 			st.ForEach(func(o interface{}, _ int) bool {
-				each_item = append(each_item, o.(string))
+				eachItem = append(eachItem, o.(string))
 				return true
 			})
 
 			fmt.Println("\nRemoved tau\n")
 			fmt.Println(st)
 
-			g.Assert(each_item).Eql([]interface{}{"aww", "bar", "baz", "fiz", "foo", "tar", })
+			g.Assert(eachItem).Eql([]interface{}{"aww", "bar", "baz", "fiz", "foo", "tar", })
 
 			g.Assert(st.First()).Equal("aww")
 			g.Assert(st.PrevItem("aww") == nil).IsTrue()
@@ -248,7 +248,7 @@ func TestSSet(t *testing.T) {
 
 func TestSSet_LargeSet(t *testing.T) {
 	g := goblin.Goblin(t)
-	var N = int(1000000)
+	var N = 1000000
 	var BenchData = GenRandData(N)
 	var BenchIdxs = GenRandIndxs(1000)
 	var lst = NewSSet(cmp.F64)
