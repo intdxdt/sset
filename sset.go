@@ -3,9 +3,9 @@ package sset
 import (
 	"fmt"
 	"bytes"
+	"github.com/intdxdt/cmp"
 	"github.com/intdxdt/math"
 	"github.com/intdxdt/subsset"
-	"github.com/intdxdt/cmp"
 )
 
 const subN = 32

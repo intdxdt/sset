@@ -26,19 +26,15 @@ func createMaxCmp(cmp cmp.Compare) cmp.Compare {
 }
 
 func offsetCmp(as, bs interface{}) int {
-	var i, j int
+	var i, j = as, bs
 	a, ok := as.(*subset)
 	if ok {
 		i = a.offset
-	} else {
-		i = as.(int)
 	}
 
 	b, ok := bs.(*subset)
 	if ok {
 		j = b.offset
-	} else {
-		j = bs.(int)
 	}
-	return i - j
+	return i.(int) - j.(int)
 }
