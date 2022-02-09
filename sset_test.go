@@ -204,7 +204,7 @@ func TestSSet(t *testing.T) {
 				return true
 			})
 
-			fmt.Println("\nRemoved tau\n")
+			fmt.Print("\nRemoved tau\n")
 			fmt.Println(st)
 
 			g.Assert(eachItem).Eql([]interface{}{"aww", "bar", "baz", "fiz", "foo", "tar"})

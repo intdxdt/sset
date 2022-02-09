@@ -22,7 +22,7 @@ func (s *SSet) Intersection(other *SSet) *SSet {
 	return inter
 }
 
-//Difference- s difference
+//Difference - s difference
 //items in s not contained in other
 func (s *SSet) Difference(other *SSet) *SSet {
 	diff := NewSSet(s.cmp, s.load)
