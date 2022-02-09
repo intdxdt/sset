@@ -2,11 +2,11 @@ package sset
 
 import (
 	"fmt"
-	"time"
-	"testing"
-	"math/rand"
-	"github.com/intdxdt/cmp"
 	"github.com/franela/goblin"
+	"github.com/intdxdt/cmp"
+	"math/rand"
+	"testing"
+	"time"
 )
 
 func IntCompare(a, b interface{}) int {
@@ -36,7 +36,7 @@ func StrCompare(a, b interface{}) int {
 var seed = rand.NewSource(time.Now().UnixNano())
 var rnd = rand.New(seed)
 
-func GenRandData(N int) []float64{
+func GenRandData(N int) []float64 {
 	var data = make([]float64, N, N)
 	for i := 0; i < N; i++ {
 		data[i] = rnd.Float64()
@@ -90,7 +90,7 @@ func TestSSet(t *testing.T) {
 			var oddList = st.Filter(func(o interface{}, _ int) bool {
 				return o.(int)%2 == 1
 			})
-			var first3oddList = make([]interface{},0)
+			var first3oddList = make([]interface{}, 0)
 
 			st.ForEach(func(o interface{}, _ int) bool {
 				if o.(int)%2 == 1 {
@@ -207,7 +207,7 @@ func TestSSet(t *testing.T) {
 			fmt.Println("\nRemoved tau\n")
 			fmt.Println(st)
 
-			g.Assert(eachItem).Eql([]interface{}{"aww", "bar", "baz", "fiz", "foo", "tar", })
+			g.Assert(eachItem).Eql([]interface{}{"aww", "bar", "baz", "fiz", "foo", "tar"})
 
 			g.Assert(st.First()).Equal("aww")
 			g.Assert(st.PrevItem("aww") == nil).IsTrue()

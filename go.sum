@@ -1,0 +1,17 @@
+github.com/franela/goblin v0.0.0-20200404164657-567a4070c437/go.mod h1:VzmDKDJVZI3aJmnRI9VjAn9nJ8qPPsN1fqzr9dqInIo=
+github.com/franela/goblin v0.0.0-20211003143422-0a4f594942bf h1:NrF81UtW8gG2LBGkXFQFqlfNnvMt9WdB46sfdJY4oqc=
+github.com/franela/goblin v0.0.0-20211003143422-0a4f594942bf/go.mod h1:VzmDKDJVZI3aJmnRI9VjAn9nJ8qPPsN1fqzr9dqInIo=
+github.com/intdxdt/algor v1.0.0 h1:aVpCimTwMyDH41+p+NgW3XakhU7wWgh+cgS4NBpLaGg=
+github.com/intdxdt/algor v1.0.0/go.mod h1:PIm6sS+6rDWqimY6PM927RQqqES5nM/JwWidPPn6h0s=
+github.com/intdxdt/cmp v1.0.0 h1:/maS8/ggnklxBmK5BSyB58HumjS5VtCJiM2K2SMvc0c=
+github.com/intdxdt/cmp v1.0.0/go.mod h1:6dawtInL7ZFFaHJmE7Puj7b9qfPGUxYd81jqo3z9wJw=
+github.com/intdxdt/dbits v0.0.0-20171026062838-f7e9caad92f4/go.mod h1:GLKbRshq9XwOsyiyfx2vRXbKAeDBwo8uNb6pLPDipr4=
+github.com/intdxdt/math v1.0.0 h1:zjwziZDSJwuxg6gTY12U2cDoZpAt3sFlpbJzFMaD4qk=
+github.com/intdxdt/math v1.0.0/go.mod h1:/iQnUD7sXRLoOziKeJ628KqhSF3GQi7HdQ3LsbgiKpk=
+github.com/intdxdt/robust v1.0.0 h1:x5pNk5s7wF4I2s60zM57XSatrK7QXagOctFjmahrsUU=
+github.com/intdxdt/robust v1.0.0/go.mod h1:uIGXMmYcuFItUjeG37oxt0x7RFXdL4MEfXP4uVstLZ0=
+github.com/intdxdt/subsset v0.0.0-20180704174917-aa7d221d338e h1:rF7UiMv1pm55Qk96A+bw+Wl3JzEP7YwqhvFDMlrxXtU=
+github.com/intdxdt/subsset v0.0.0-20180704174917-aa7d221d338e/go.mod h1:QdZzTonceNYzTjAL+ZnWFfzZc1q6fDq+2Q2vtGN3wcQ=
+github.com/intdxdt/subsset v1.0.0 h1:G6gi9mVZ5TEvSRk3w3OlkZc4NzoJOKxxTQy5BxdddPQ=
+github.com/intdxdt/subsset v1.0.0/go.mod h1:2PuAf+peYWRbGHt6hIv38eF8cn3vsaEIEolLTA7yDhU=
+github.com/intdxdt/twiddle v0.0.0-20180605015803-8a5d3aeb2e67/go.mod h1:aos2CXzSXDP82nQmZbxyi3w7TAdnhNZ2kLRm3pI5SjI=

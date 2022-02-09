@@ -1,8 +1,8 @@
 package sset
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"github.com/intdxdt/cmp"
 	"github.com/intdxdt/math"
 	"github.com/intdxdt/subsset"
@@ -55,7 +55,7 @@ func (s *SSet) Size() int {
 		return n
 	}
 	var view = s.list.DataView()
-	var sub  = view[len(view)-1].(*subset)
+	var sub = view[len(view)-1].(*subset)
 	n = sub.offset + sub.size()
 	return n
 }
