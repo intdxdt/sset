@@ -25,7 +25,7 @@ func (s *SSet) Add(v interface{}) *SSet {
 	return s
 }
 
-//Extend SSet given list of values as params
+// Extend SSet given list of values as params
 func (s *SSet) Extend(values ...interface{}) *SSet {
 	for _, v := range values {
 		s.Add(v)
@@ -33,8 +33,7 @@ func (s *SSet) Extend(values ...interface{}) *SSet {
 	return s
 }
 
-
-//Empty SubSSet
+// Empty SubSSet
 func (s *SSet) Empty() *SSet {
 	//given this snap short of the view
 	//remove each item. Note : remove changes the original
@@ -48,7 +47,7 @@ func (s *SSet) Empty() *SSet {
 	return s
 }
 
-//Remove item from set
+// Remove item from set
 func (s *SSet) Remove(items ...interface{}) *SSet {
 	if s.IsEmpty() {
 		return s
@@ -61,7 +60,7 @@ func (s *SSet) Remove(items ...interface{}) *SSet {
 	for i := 0; i < n; i++ {
 		idx = s.findSubsetByMax(items[i])
 		//update prev index
-		prev_idx = math.MinInt(prev_idx, idx-1)
+		prev_idx = math.Min(prev_idx, idx-1)
 
 		sub = s.list.Get(idx).(*subset)
 		if sub.size() == 1 && s.cmp(sub.max(), items[i]) == 0 {
@@ -83,15 +82,15 @@ func (s *SSet) Remove(items ...interface{}) *SSet {
 	return s
 }
 
-//Pop item from the end of the sorted list
+// Pop item from the end of the sorted list
 func (s *SSet) Pop() interface{} {
 	var val interface{}
 	if s.IsEmpty() {
 		return val
 	}
 	view := s.list.DataView()
-	n    := len(view)
-	sub  := view[n-1].(*subset)
+	n := len(view)
+	sub := view[n-1].(*subset)
 
 	if sub.size() == 1 {
 		val = sub.set.Get(-1)
@@ -103,7 +102,7 @@ func (s *SSet) Pop() interface{} {
 	return val
 }
 
-//PopLeft item from the beginning of the sorted list
+// PopLeft item from the beginning of the sorted list
 func (s *SSet) PopLeft() interface{} {
 	var val interface{}
 	if s.IsEmpty() {

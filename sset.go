@@ -11,7 +11,7 @@ import (
 const subN = 32
 const Load = 1000
 
-//SSet type
+// SSet type
 type SSet struct {
 	cmp     func(a, b interface{}) int
 	list    *subsset.SubSSet
@@ -20,7 +20,7 @@ type SSet struct {
 	load    int
 }
 
-//NewSSet Sorted Set
+// NewSSet Sorted Set
 func NewSSet(cmp cmp.Compare, load ...int) *SSet {
 	var ldN = Load
 	if len(load) > 0 {
@@ -33,11 +33,11 @@ func NewSSet(cmp cmp.Compare, load ...int) *SSet {
 	return &SSet{
 		cmp:  cmp,
 		list: list,
-		load: math.MinInt(ldN, Load),
+		load: math.Min(ldN, Load),
 	}
 }
 
-//Clone SSet
+// Clone SSet
 func (s *SSet) Clone() *SSet {
 	clone := NewSSet(s.cmp, s.load)
 
@@ -64,7 +64,7 @@ func (s *SSet) IsEmpty() bool {
 	return s.list.IsEmpty()
 }
 
-//First item in s
+// First item in s
 func (s *SSet) First() interface{} {
 	if !s.IsEmpty() {
 		sub := s.list.Get(0).(*subset)
@@ -73,7 +73,7 @@ func (s *SSet) First() interface{} {
 	return nil
 }
 
-//Last Item in s
+// Last Item in s
 func (s *SSet) Last() interface{} {
 	if !s.IsEmpty() {
 		sub := s.list.Get(-1).(*subset)
@@ -82,7 +82,7 @@ func (s *SSet) Last() interface{} {
 	return nil
 }
 
-//Get value at given index in O(lgN)
+// Get value at given index in O(lgN)
 func (s *SSet) Get(index int) interface{} {
 	if index < 0 {
 		index += s.Size()
@@ -101,7 +101,7 @@ func (s *SSet) Get(index int) interface{} {
 	return nil
 }
 
-//Contains item for the presence of a value in the Array - O(2lgN)
+// Contains item for the presence of a value in the Array - O(2lgN)
 func (s *SSet) Contains(items ...interface{}) bool {
 	if s.IsEmpty() {
 		return false
@@ -121,7 +121,7 @@ func (s *SSet) Contains(items ...interface{}) bool {
 	return bln
 }
 
-//IndexOf item for the presence of a value in the Array - O(2lgN)
+// IndexOf item for the presence of a value in the Array - O(2lgN)
 func (s *SSet) IndexOf(item interface{}) int {
 	idx := -1
 	if s.IsEmpty() {
@@ -137,7 +137,7 @@ func (s *SSet) IndexOf(item interface{}) int {
 	return idx
 }
 
-//Values of the set
+// Values of the set
 func (s *SSet) Values() []interface{} {
 	vals := make([]interface{}, 0)
 	view := s.list.DataView()
@@ -148,7 +148,7 @@ func (s *SSet) Values() []interface{} {
 	return vals
 }
 
-//NextItem gets next given item in the sorted set
+// NextItem gets next given item in the sorted set
 func (s *SSet) NextItem(v interface{}) interface{} {
 	if s.IsEmpty() {
 		return nil
@@ -163,7 +163,7 @@ func (s *SSet) NextItem(v interface{}) interface{} {
 	return prev
 }
 
-//PrevItem gets previous given item in the sorted s
+// PrevItem gets previous given item in the sorted s
 func (s *SSet) PrevItem(v interface{}) interface{} {
 	if s.IsEmpty() {
 		return nil
@@ -178,7 +178,7 @@ func (s *SSet) PrevItem(v interface{}) interface{} {
 	return prev
 }
 
-//Loop through items in the queue with a callback
+// Loop through items in the queue with a callback
 // if callback returns bool. Break looping with callback
 // return as false
 func (s *SSet) ForEach(fn func(interface{}, int) bool) {
@@ -190,7 +190,7 @@ func (s *SSet) ForEach(fn func(interface{}, int) bool) {
 	}
 }
 
-//Filters items based on predicate : func (item Item, i int) bool
+// Filters items based on predicate : func (item Item, i int) bool
 func (s *SSet) Filter(fn func(interface{}, int) bool) []interface{} {
 	var items = make([]interface{}, 0)
 	s.ForEach(func(v interface{}, i int) bool {
